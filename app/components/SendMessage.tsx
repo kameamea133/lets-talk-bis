@@ -91,7 +91,7 @@ export default function SendMessage() {
                 <label htmlFor='imageUpload' className='cursor-pointer p-3 bg-gray-300 rounded-l-md'>
                     <BsFileImage size={24} />
                 </label>
-                <input value={value} onChange={handleChange} placeholder='Votre message...' type="text" className='p-3 w-full outline-none border-none' />
+                <input value={value} onChange={handleChange} placeholder='Votre message...' type="text" className='p-3 w-full outline-none border-none text-black' />
                 <button type="submit" className="bg-blue-300 text-white p-3 flex items-center gap-2 border-none rounded-r-md hover:bg-blue-400">
                     <IoSend />
                     <span>Envoyer</span>
