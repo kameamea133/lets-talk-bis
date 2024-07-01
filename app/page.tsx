@@ -9,11 +9,15 @@ import { motion } from "framer-motion";
 
 export default function Home() {
 
+
+   // Animation variants for fade-up effect
   const FADE_UP_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: 10 },
     show: { opacity: 1, y: 0, transition: { type: "spring" } },
   };
 
+
+  // Custom hook for Google login authentication
   const { loginWithGoogle } = useClientAuth();
 
   return (

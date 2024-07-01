@@ -8,9 +8,11 @@ import Image from "next/image";
 
 export default function Nav() {
 
+  // Destructure user, loginWithGoogle, and redirectIfAuthenticated from useClientAuth hook
     const { user, loginWithGoogle, redirectIfAuthenticated } = useClientAuth()
 
   
+    // Function to handle navigation to dashboard
     const goToDashboard = () => {
         if(!user) {
             loginWithGoogle()

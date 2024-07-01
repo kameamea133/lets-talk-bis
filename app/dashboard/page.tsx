@@ -11,20 +11,29 @@ import { motion } from "framer-motion";
 
 export default function PageDashboard() {
 
+  // Router instance for navigation
   const router = useRouter();
+
+   // Destructure user and redirectIfAuthenticated from useClientAuth hook
   const { user, redirectIfAuthenticated } = useClientAuth();
 
+
+  // Effect to redirect if user is not authenticated
 useEffect(() => {
   if(!user) {
     redirectIfAuthenticated();
   }
 }, [user])
 
+
+ // Function to handle sign out
   const handleSignOut = () => {
     signOut(auth);
     router.push('/');
   }
 
+
+   // Animation variants for fade-down effect
   const FADE_DOWN_ANIMATION_VARIANTS = {
     hidden: { opacity: 0, y: -10 },
     show: { opacity: 1, y: 0, transition: { type: "spring" } },

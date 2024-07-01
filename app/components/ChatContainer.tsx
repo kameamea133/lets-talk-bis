@@ -16,11 +16,18 @@ interface Message {
 }
 
 export default function ChatContainer() {
-    const [data, setData] = useState<Message[]>([]);
-    const { user } = useClientAuth();
-    console.log(user);
 
+    // State to hold chat messages
+    const [data, setData] = useState<Message[]>([]);
+
+    // Get the authenticated user
+    const { user } = useClientAuth();
+    
+
+    // Effect to fetch messages from Firestore
     useEffect(() => {
+
+        // Query to get the latest 50 messages ordered by creation time
         const q = query(collection(db, 'messages'), orderBy('createdAt'), limit(50));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const messages: Message[] = [];
@@ -45,6 +52,7 @@ export default function ChatContainer() {
     }, []);
     console.log(data);
 
+    // Function to handle message deletion
     const handleDeleteMessage = async (id: string) => {
         try {
             await deleteDoc(doc(db, 'messages', id));

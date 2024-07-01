@@ -8,11 +8,21 @@ import { BsFileImage } from 'react-icons/bs';
 import { MdCancel } from 'react-icons/md';
 
 export default function SendMessage() {
+
+    // State to hold the message text
     const [value, setValue] = useState('');
+
+    // State to hold the selected image file
     const [image, setImage] = useState<File | null>(null);
+
+    // State to hold the image preview URL
     const [imagePreview, setImagePreview] = useState<string | null>(null);
+
+    // Get the authenticated user
     const { user } = useClientAuth();
 
+
+    // Handle image file selection
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
             const file = e.target.files[0];
@@ -21,16 +31,23 @@ export default function SendMessage() {
         }
     };
 
+
+    // Handle message text change
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         setValue(val);
     };
 
+
+   // Handle removing the selected image
     const handleRemoveImage = () => {
         setImage(null);
         setImagePreview(null);
     };
 
+
+    
+     // Handle form submission to send the message
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
@@ -39,15 +56,18 @@ export default function SendMessage() {
                 const { uid, displayName, photoURL } = user;
                 let imageUrl = '';
 
+
+                // If an image is selected, upload it to Firebase Storage
                 if (image) {
                     const imageRef = ref(storage, `images/${image.name}`);
                     const snapshot = await uploadBytes(imageRef, image);
                     imageUrl = await getDownloadURL(snapshot.ref);
                 }
 
+                 // Add the message to Firestore
                 await addDoc(collection(db, 'messages'), {
                     text: value,
-                    userId: uid, // Enregistrer l'ID de l'utilisateur ici
+                    userId: uid,
                     name: displayName,
                     avatar: photoURL,
                     imageUrl: imageUrl,
@@ -57,6 +77,8 @@ export default function SendMessage() {
         } catch (err) {
             console.log(err);
         }
+
+        // Reset the form
         setValue('');
         setImage(null);
         setImagePreview(null);
