@@ -4,21 +4,51 @@
 import Image from "next/image";
 import { FcGoogle } from "react-icons/fc";
 import  useClientAuth  from "./hooks/useClientAuth";
+import { motion } from "framer-motion";
+
 
 export default function Home() {
+
+  const FADE_UP_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  };
 
   const { loginWithGoogle } = useClientAuth();
 
   return (
     <section className="w-full h-screen flex items-center justify-center p-3">
-     <div className="max-w-[1000px] m-auto flex items-center justify-center flex-col gap-5 text-center">
-      <h1 className="text-6xl uppercase font-black">CHAT<span className="text-blue-600">APP</span></h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem fugit quaerat architecto? Dolores nam recusandae officiis hic dolore aut dicta doloremque quas dolor excepturi quos facere accusantium praesentium voluptatum saepe, exercitationem molestiae iure animi inventore libero id similique illum beatae?</p>
-      <button onClick={loginWithGoogle} className="bg-gray-200 hover:bg-gray-300 text-gray-900 rounded-md p-2 flex items-center gap-2">
+     <motion.div
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren: 0.15,
+          },
+        },
+      }}
+     className="max-w-[1000px] m-auto flex items-center justify-center flex-col gap-5 text-center">
+      <motion.div 
+      variants={FADE_UP_ANIMATION_VARIANTS}
+      >
+        <div className="relative w-[200px] h-[200px]">
+
+        <Image src="/logo.png" alt="logo" layout="fill" objectFit="contain" className="rounded-full" />
+        </div>
+      </motion.div>
+      <motion.p 
+      variants={FADE_UP_ANIMATION_VARIANTS}
+      className="mt-6 text-center md:text-2xl mb-5 text-white">"Parlez, Partagez, Profitez"</motion.p>
+      <motion.button 
+      variants={FADE_UP_ANIMATION_VARIANTS}
+      onClick={loginWithGoogle} className="bg-gray-200 hover:bg-gray-300 text-gray-900 rounded-md p-2 flex items-center gap-2">
         <FcGoogle /> 
         <span>Se connecter avec Google</span>
-      </button>
-     </div>
+      </motion.button>
+     </motion.div>
     </section>
   );
 }

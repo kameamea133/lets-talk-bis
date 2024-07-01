@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import  useClientAuth  from "../hooks/useClientAuth";
 import { useRouter } from "next/navigation";
 import { auth } from "../db/firebaseConfig";
+import { motion } from "framer-motion";
 
 export default function PageDashboard() {
 
@@ -23,25 +24,49 @@ useEffect(() => {
     signOut(auth);
     router.push('/');
   }
-console.log(user)
+
+  const FADE_DOWN_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: -10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  };
+
   return (
     <>
-    {user && <div className="w-full h-screen relative">
+    {user && <motion.div 
+     initial="hidden"
+     animate="show"
+     viewport={{ once: true }}
+     variants={{
+       hidden: {},
+       show: {
+         transition: {
+           staggerChildren: 0.15,
+         },
+       },
+     }}
+    className="w-full h-screen relative">
       <div className="w-full h-screen flex items-center flex-col gap-5 p-3 pt-20">
-      <span className="font-bold text-blue-600">Votre compte</span>
-      <h1 className="text-6xl uppercase font-black">DASH<span className="text-blue-600">BOARD</span></h1>
+      <motion.h1 
+      variants={FADE_DOWN_ANIMATION_VARIANTS}
+      className="text-6xl uppercase text-white">MY DASH<span className="text-blue-600">BOARD</span></motion.h1>
       <ul className="flex flex-col justify-center gap-3 items-center">
-        <li><img src={`${user?.photoURL}`} alt="photo profil" className="w-16 h-16"/></li>
-        <li>Bienvenue <b>{user?.displayName}</b></li>
+        <motion.li 
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        ><img src={`${user?.photoURL}`} alt="photo profil" className="w-16 h-16 rounded-full shadow-2xl"/></motion.li>
+        <motion.li
+        variants={FADE_DOWN_ANIMATION_VARIANTS}
+        className="text-white">Bienvenue <b>{user?.displayName}</b></motion.li>
       </ul>
-      <button onClick={handleSignOut} className="absolute top-2 right-2 block bg-red-500 px-3 py-1 text-white hover:bg-red-800 my-3 rounded-md">
+      <button onClick={handleSignOut} className="absolute top-[350px] block shadow-lg bg-[rgba(17,25,40,0.75)] bg-opacity-75 px-3 py-1 text-white hover:bg-red-800 my-3 rounded-md">
         <FaSignOutAlt  />
       </button>
-      <button onClick={() => router.push('/chat')} className=" block bg-yellow-500 px-3 py-1 text-white hover:bg-yellow-800 my-3 rounded-md">
+      <motion.button 
+      variants={FADE_DOWN_ANIMATION_VARIANTS}
+      onClick={() => router.push('/chat')} className=" block bg-[rgba(17,25,40,0.75)] bg-opacity-75 px-3 py-1 shadow-lg text-white hover:bg-[rgba(17,25,40,0.35)] my-3 rounded-md">
        Accéder au chat
-      </button>
+      </motion.button>
       </div>
-      </div>}
+      </motion.div>}
     </>
   )
 }
