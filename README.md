@@ -20,6 +20,43 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Features
+
+Google Authentication
+Real-time messaging
+Image uploads
+Responsive design
+
+## Technologies Used
+
+Next.js
+React
+Firebase Firestore
+Firebase Authentication
+Firebase Storage
+Framer Motion for animations
+React Icons for icons
+
+## Folder Structure
+
+components/: Contains React components used in the application
+db/: Firebase configuration file
+hooks/: Custom hooks used in the application
+pages/: Next.js pages
+public/: Public assets such as images and icons
+
+
+## Key Files
+
+'db/firebaseConfig.ts': Firebase configuration and initialization
+'hooks/useClientAuth.ts': Custom hook for managing client authentication
+'components/ChatContainer.tsx': Component to display chat messages
+'components/SendMessage.tsx': Component for sending messages
+'components/Nav.tsx': Navigation bar component
+'pages/index.tsx': Home page
+'pages/dashboard.tsx': Dashboard page
+'pages/chat.tsx': Chat page
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
