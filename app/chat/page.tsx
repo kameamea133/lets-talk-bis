@@ -20,7 +20,16 @@ export default function PageChat() {
     }
   }, [isFetch])
 
+  useEffect(() => {
+    if(!loading && !user) {
+      router.push('/')
+    }
+  }, [user, loading, router])
+
   return (
-    <div>Chat page</div>
+    <div className="w-full h-screen">
+      <ChatContainer />
+      <SendMessage />
+    </div>
   )
 }
