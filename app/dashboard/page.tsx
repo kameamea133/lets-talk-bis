@@ -65,7 +65,7 @@ useEffect(() => {
         variants={FADE_DOWN_ANIMATION_VARIANTS}
         className="text-white">Bienvenue <b>{user?.displayName}</b></motion.li>
       </ul>
-      <button onClick={handleSignOut} className="absolute top-[350px] block shadow-lg bg-[rgba(17,25,40,0.75)] bg-opacity-75 px-3 py-1 text-white hover:bg-red-800 my-3 rounded-md">
+      <button onClick={handleSignOut} className="absolute top-[400Px] lg:top-[350px] block shadow-lg bg-[rgba(17,25,40,0.75)] bg-opacity-75 px-3 py-1 text-white hover:bg-red-800 my-3 rounded-md">
         <FaSignOutAlt  />
       </button>
       <motion.button 
