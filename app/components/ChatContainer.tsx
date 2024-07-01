@@ -33,7 +33,6 @@ export default function ChatContainer() {
             const messages: Message[] = [];
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
-                console.log('Message data:', data);
                 messages.push({
                     id: doc.id,
                     name: data.name,
@@ -50,7 +49,7 @@ export default function ChatContainer() {
         });
         return () => unsubscribe();
     }, []);
-    console.log(data);
+    
 
     // Function to handle message deletion
     const handleDeleteMessage = async (id: string) => {

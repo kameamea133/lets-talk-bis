@@ -1,6 +1,5 @@
 'use client'
 
-
 import { FaSignOutAlt } from "react-icons/fa";
 import {signOut} from 'firebase/auth';
 import { useEffect } from "react";

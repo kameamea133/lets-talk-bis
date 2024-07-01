@@ -1,6 +1,6 @@
 'use client'
 
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import Link from "next/link";
 import useClientAuth from "../hooks/useClientAuth";
 import Image from "next/image";

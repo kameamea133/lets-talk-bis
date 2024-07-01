@@ -40,7 +40,7 @@ export default function Home() {
       >
         <div className="relative w-[200px] h-[200px]">
 
-        <Image src="/logo.png" alt="logo" layout="fill" objectFit="contain" className="rounded-full" />
+        <Image src="/logo.png" alt="logo" fill className="rounded-full" priority={true} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"/>
         </div>
       </motion.div>
       <motion.p 

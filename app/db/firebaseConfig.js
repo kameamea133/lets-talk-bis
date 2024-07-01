@@ -6,7 +6,7 @@ import { getStorage } from 'firebase/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC167yE746hBCeNzSrn6ZwDtTZSL7M0cWk",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "lets-talk-ae7e3.firebaseapp.com",
   projectId: "lets-talk-ae7e3",
   storageBucket: "lets-talk-ae7e3.appspot.com",
