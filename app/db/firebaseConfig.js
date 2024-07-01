@@ -7,11 +7,11 @@ import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: "lets-talk-ae7e3.firebaseapp.com",
-  projectId: "lets-talk-ae7e3",
-  storageBucket: "lets-talk-ae7e3.appspot.com",
-  messagingSenderId: "37471023614",
-  appId: "1:37471023614:web:aa2462fbed2b9dc25a10af"
+  authDomain: "lets-talk-bis.firebaseapp.com",
+  projectId: "lets-talk-bis",
+  storageBucket: "lets-talk-bis.appspot.com",
+  messagingSenderId: "280420978617",
+  appId: "1:280420978617:web:cb9c2c96b672b9da7c3068"
 };
 
 
